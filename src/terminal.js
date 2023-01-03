@@ -34,6 +34,11 @@ const pages = {
             description: "Page detailing LiveSplit projects I've done.",
             url: "livesplit",
             fullName: "LiveSplit"
+        },
+        "notetree": {
+            description: "Personal note taking application.",
+            url: "notetree",
+            fullName: "Note Tree"
         }
     },
     "Misc.": {
