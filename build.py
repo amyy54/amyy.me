@@ -30,7 +30,7 @@ if __name__ == "__main__":
             shutil.copyfile(f"src/{filename}", f"build/static/{filename}")
             static_files.append({
                 "filename": filename,
-                "path": f"static/{filename}"
+                "path": f'/static/mini.amyy.me/{filename}'
             })
         elif filename.endswith(".css"):
             file = open(f'build/static/{generated_file_name(filename, GIT_VERSION)}', 'w+')
@@ -39,7 +39,7 @@ if __name__ == "__main__":
             file.close()
             static_files.append({
                 "filename": filename,
-                "path": f'static/{generated_file_name(filename, GIT_VERSION)}'
+                "path": f'/static/mini.amyy.me/{generated_file_name(filename, GIT_VERSION)}'
             })
             os.remove(f'build/static/{filename}')
         elif filename.endswith(".js"):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             file.close()
             static_files.append({
                 "filename": filename,
-                "path": f'static/{generated_file_name(filename, GIT_VERSION)}'
+                "path": f'/static/mini.amyy.me/{generated_file_name(filename, GIT_VERSION)}'
             })
         elif not filename.endswith(".html"):
             shutil.copyfile(f"src/{filename}", f"build/{filename}")
