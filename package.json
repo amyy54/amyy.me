@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "python3 ./build.py"
+  },
+  "devDependencies": {
+    "minify": "^9.1.0",
+    "tailwindcss": "^3.2.4"
+  }
+}

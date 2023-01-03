@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    /* Technically unused, if the JS loads correctly :p */
+    background-color: #bb8aff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.terminal {
+    --background: #bb8aff;
+    --color: black;
+    --font: "Menlo";
+    --size: 1.4;
+    --terminal-height: 400;
+}
