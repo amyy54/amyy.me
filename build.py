@@ -14,6 +14,7 @@ def new_html_file(filename: str, result: str, static: list, version: str) -> Non
     output = result.replace("<script src=https://cdn.tailwindcss.com></script>", "")
     for file in static:
         output = output.replace(f"={file['filename']}", f"={file['path']}")
+    output = output.replace("REPLACE_ALL_GIT_VERSION", version)
     with open(f'build/{filename}', 'w+') as html_file:
         html_file.write(output)
 
@@ -23,7 +24,15 @@ if __name__ == "__main__":
     result = subprocess.run(['git', 'describe', '--always'], stdout=subprocess.PIPE)
     GIT_VERSION = result.stdout.decode('utf-8').strip()
 
-    subprocess.run(['mkdir', '-p', 'build/static'])
+    subprocess.run(['mkdir', '-p', 'build/static/fonts'])
+
+    for filename in os.listdir("src/fonts/"):
+        shutil.copyfile(f"src/fonts/{filename}", f"build/static/fonts/{filename}")
+        if filename.endswith(".ttf"):
+            static_files.append({
+                "filename": filename,
+                "path": f'/static/mini.amyy.me/fonts/{filename}'
+            })
 
     for filename in os.listdir("src/"):
         if filename.endswith(".png"):
@@ -52,9 +61,9 @@ if __name__ == "__main__":
                 "filename": filename,
                 "path": f'/static/mini.amyy.me/{generated_file_name(filename, GIT_VERSION)}'
             })
-        elif not filename.endswith(".html"):
-            shutil.copyfile(f"src/{filename}", f"build/{filename}")
-    
+        # elif not filename.endswith(".html"):
+        #     shutil.copyfile(f"src/{filename}", f"build/{filename}")
+
     for filename in os.listdir("src/"):
         if filename.endswith(".html"):
             result = subprocess.run(['npx', 'minify', f'src/{filename}'], stdout=subprocess.PIPE).stdout.decode('utf-8').strip()

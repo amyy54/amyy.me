@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Sofia Sans';
+    src: url('fonts/sofiasans-variablefont_wght-webfont.woff2') format('woff2'),
+         url('fonts/sofiasans-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    /* Technically unused, if the JS loads correctly :p */
-    background-color: #bb8aff;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: #25222a;
+    font-family: "Sofia Sans"
 }
 
 .terminal {
@@ -14,4 +21,22 @@ body {
     --font: "Menlo";
     --size: 1.4;
     --terminal-height: 400;
+}
+
+.trans {
+    --bg-size: 400%;
+    background: linear-gradient(90deg, #f5a9b8, #ffffff, #5bfefa, #ffffff, #f5a9b8) 0 0 / var(--bg-size) 100%;
+    background-clip: text;
+    color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .trans {
+        animation: move-bg 15s linear infinite;
+    }
+    @keyframes move-bg {
+        to {
+            background-position: var(--bg-size);
+        }
+    }
 }
