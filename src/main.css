@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #25222a;
+    background-color: #bb8aff;
     font-family: "Sofia Sans"
 }
 
@@ -25,7 +25,7 @@ body {
 
 .trans {
     --bg-size: 400%;
-    background: linear-gradient(90deg, #f5a9b8, #ffffff, #5bfefa, #ffffff, #f5a9b8) 0 0 / var(--bg-size) 100%;
+    background: linear-gradient(135deg, #f5a9b8, #ffffff, #5bfefa, #ffffff, #f5a9b8) 0 0 / var(--bg-size) 100%;
     background-clip: text;
     color: transparent;
 }
