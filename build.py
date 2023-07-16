@@ -1,6 +1,10 @@
 import subprocess
 import os
 import shutil
+import sys
+
+STATIC_DEPLOYED = "/static/mini.amyy.me/"
+STATIC_TESTING = "/static/"
 
 def generated_file_name(filename: str, version: str) -> str:
     filenameArr = filename.split(".")
@@ -19,6 +23,8 @@ def new_html_file(filename: str, result: str, static: list, version: str) -> Non
         html_file.write(output)
 
 if __name__ == "__main__":
+    STATIC_LOCATION = STATIC_TESTING if "-d" in sys.argv else STATIC_DEPLOYED
+
     static_files = []
     # Get Git Version
     result = subprocess.run(['git', 'describe', '--always'], stdout=subprocess.PIPE)
@@ -31,7 +37,7 @@ if __name__ == "__main__":
         if filename.endswith(".ttf"):
             static_files.append({
                 "filename": filename,
-                "path": f'/static/mini.amyy.me/fonts/{filename}'
+                "path": f'{STATIC_LOCATION}fonts/{filename}'
             })
 
     for filename in os.listdir("src/"):
@@ -39,7 +45,7 @@ if __name__ == "__main__":
             shutil.copyfile(f"src/{filename}", f"build/static/{filename}")
             static_files.append({
                 "filename": filename,
-                "path": f'/static/mini.amyy.me/{filename}'
+                "path": f'{STATIC_LOCATION}{filename}'
             })
         elif filename.endswith(".css"):
             file = open(f'build/static/{generated_file_name(filename, GIT_VERSION)}', 'w+')
@@ -48,7 +54,7 @@ if __name__ == "__main__":
             file.close()
             static_files.append({
                 "filename": filename,
-                "path": f'/static/mini.amyy.me/{generated_file_name(filename, GIT_VERSION)}'
+                "path": f'{STATIC_LOCATION}{generated_file_name(filename, GIT_VERSION)}'
             })
             os.remove(f'build/static/{filename}')
         elif filename.endswith(".js"):
@@ -59,7 +65,7 @@ if __name__ == "__main__":
             file.close()
             static_files.append({
                 "filename": filename,
-                "path": f'/static/mini.amyy.me/{generated_file_name(filename, GIT_VERSION)}'
+                "path": f'{STATIC_LOCATION}{generated_file_name(filename, GIT_VERSION)}'
             })
         # elif not filename.endswith(".html"):
         #     shutil.copyfile(f"src/{filename}", f"build/{filename}")
