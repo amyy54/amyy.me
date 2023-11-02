@@ -40,6 +40,9 @@ if __name__ == "__main__":
                 "path": f'{STATIC_LOCATION}fonts/{filename}'
             })
 
+    for filename in os.listdir("src/favicon/"):
+        shutil.copyfile(f"src/favicon/{filename}", f"build/{filename}")
+
     for filename in os.listdir("src/"):
         if filename.endswith(".png"):
             shutil.copyfile(f"src/{filename}", f"build/static/{filename}")

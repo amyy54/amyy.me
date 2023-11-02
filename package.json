@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "python3 ./build.py",
-    "start": "python3 ./build.py -d && python3 -m http.server -d ./build"
+    "start": "python3 ./build.py -d && python3 -m http.server -d ./build",
+    "clean": "rm -rf ./build"
   },
   "devDependencies": {
     "minify": "^9.1.0",
