@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Amy</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="msapplication-TileColor" content="#603cba">
-    <meta name="theme-color" content="#ffffff">
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+[%- INCLUDE templates/header.html
+title = "Amy"
+-%]
 <body class="bg-bg-primary flex flex-wrap justify-center items-center text-[16px] h-screen">
     <div class="flex flex-wrap justify-center">
         <div
@@ -22,41 +8,30 @@
             <p class="text-4xl">Amy</p>
             <p class="italic w-full text-xl text-gray-300">"everything is improvised."</p>
             <p class="trans">she/her</p>
-            <p class="text-3xl mt-4">Pages</p>
+            <p class="text-3xl mt-4">Portfolio</p>
             <ul class="list-disc ml-7 text-gray-300">
                 <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="speedruns">Speedruns</a> - Personal Speedrun Website</li>
+                        href="tvlog">TV Logging</a> - A website to log TV show watching activity</li>
                 <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="src-analyzer">src-verification-analyzer</a> - Gathers verification information from
-                    Speedrun.com</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="randomizer">SMO-Randomizer-Web</a> - SMO Randomizer Web Application</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="damageless">SMO-Damageless</a> - SMO damageless leaderboard</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="ootr-tracker/">OoTR Tracker</a> - Note taking app for OoT Randomizer</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="notetree">Note Tree</a> - Simple note taking application</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="livesplit">LiveSplit</a> - LiveSplit modifications/components</li>
+                        href="https://github.com/amyy54/tc">Time Converter</a> - CLI tool for parsing and manipulation of timezones</li>
                 <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
                         href="https://docs.amyy.me">Docs</a> - Documentation site</li>
+                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
+                        href="deprecated">...and more!</a> (Deprecated projects)</li>
             </ul>
             <p class="text-3xl mt-4">Socials</p>
             <ul class="list-disc ml-7 text-gray-300">
                 <li>Email - <a class="font-bold text-accent hover:underline"
                         href="mailto:public@amyy.me">public@amyy.me</a></li>
-                <li>Discord - <span class="font-bold">am.yy</span></li>
-                <li>Bluesky - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                    href="https://bsky.app/profile/amyy.me">@amyy.me</a></li>
-                <li>Twitter - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://twitter.com/mini54_">@mini54_</a></li>
                 <li>GitHub - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
                         href="https://github.com/amyy54">amyy54</a></li>
-                <li>Twitch - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://twitch.tv/mini54__">@mini54_</a></li>
-                <li>YouTube - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://youtube.com/@mini54_">Mini</a></li>
+                <li>Discord - <span class="font-bold">am.yy</span></li>
+                <li>Goodreads - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
+                        href="https://www.goodreads.com/amyy54">amyy54</a></li>
+                <li>Letterboxd - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
+                        href="https://letterboxd.com/Mini54/">Mini54</a></li>
+                <li>TV Log - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
+                        href="https://amyy.me/tvlog/@amy">@amy</a></li>
             </ul>
         </div>
     </div>
