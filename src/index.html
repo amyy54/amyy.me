@@ -1,32 +1,54 @@
-[%- INCLUDE templates/header.html
-title = "Amy"
--%]
+[%- INCLUDE templates/header.html title = "Amy" -%]
 <body class="bg-bg-primary flex flex-wrap justify-center items-center text-[16px] h-screen">
     <div class="flex flex-wrap justify-center">
         <div
             class="rounded-lg border-4 border-accent p-11 relative overflow-hidden flex-same-size bg-bg-secondary inset-px text-white max-w-[72ch]">
             <p class="text-4xl">Amy</p>
             <p class="text-lg text-gray-300">C|EH, Security+</p>
-            <p class="italic w-full text-xl text-gray-400">"everything is improvised."</p>
+            <p class="italic w-full text-md text-gray-300">"everything is improvised."</p>
             <p class="text-3xl mt-4">Portfolio</p>
             <ul class="list-disc ml-7 text-gray-300">
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-go",
+                link = "https://github.com/amyy54/uformat",
+                name = "uformat",
+                description = "Universal code formatter" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-go"
+                link = "https://github.com/amyy54/pwlist",
+                name = "pwlist",
+                description = "Wordlist generator for password craacking" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-rust"
+                link = "https://github.com/amyy54/tc",
+                name = "Time Converter",
+                description = "CLI tool for the parsing and manipulation of timezones" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-white"
+                link = "docs",
+                name = "Docs",
+                description = "Documentation site" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-python"
+                link = "gr-graph",
+                name = "Goodreads Graph",
+                description = "Github-like graph for Goodreads reading activity" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-python"
+                link = "tvlog",
+                name = "TV Logging"
+                description = "A website to log TV show watching activity" -%]
+
                 <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://github.com/amyy54/uformat">uformat</a> - Universal code formatter written in Go</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://github.com/amyy54/pwlist">pwlist</a> - Wordlist generator written in Go</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://github.com/amyy54/tc">Time Converter</a> - CLI tool for parsing and manipulation of timezones</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://amyy.me/docs">Docs</a> - Documentation site</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="gr-graph">Goodreads History</a> - Github-like graph for Goodreads reading activity</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="tvlog">TV Logging</a> - A website to log TV show watching activity</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="deprecated">...and more!</a> (Deprecated projects)</li>
+                        href="deprecated">...and more!</a> <span class="text-white">(Deprecated projects)</span></li>
             </ul>
             <p class="text-3xl mt-4">Socials</p>
-            <ul class="list-disc ml-7 text-gray-300">
+            <ul class="list-disc ml-7 text-white">
                 <li>Email - <a class="font-bold text-accent hover:underline"
                         href="mailto:public@amyy.me">public@amyy.me</a></li>
                 <li>GitHub - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"

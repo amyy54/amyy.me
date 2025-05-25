@@ -9,26 +9,55 @@ title = "Deprecated - Amy"
             <p >These are projects that, for whatever reason, I have marked as "deprecated". Either it's a tool/website I no longer properly maintain or look at, or it could be because I'm just not happy with it. Other older resources are also linked here.</p>
             <p class="text-3xl mt-4">Video Games & Speedrunning</p>
             <ul class="list-disc ml-7 text-gray-300">
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="speedruns">Speedruns</a> - Personal speedrun website</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="src-analyzer">src-verification-analyzer</a> - Gathers verification information from
-                    Speedrun.com</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="randomizer">SMO-Randomizer-Web</a> - SMO Randomizer Web Application</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="damageless">SMO-Damageless</a> - SMO damageless leaderboard</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="ootr-tracker/">OoTR Tracker</a> - Note taking app for OoT Randomizer</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="livesplit">LiveSplit</a> - LiveSplit modifications/components</li>
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://docs.google.com/spreadsheets/d/1oxbVLmMhKZeB_ouAR1aR8ejXzyPmbzECwcDZYKbrYvU/htmlview">SMO Countries Sheet</a> - SMO leaderboard sorted by countries/states</li>
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-python",
+                link = "speedruns",
+                name = "Speedruns",
+                description = "Personal speedrun website" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-typescript",
+                link = "src-analyzer",
+                name = "src-verification-analyzer",
+                description = "Gathers verification information from Speedrun.com" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-python",
+                link = "randomizer",
+                name = "SMO-Randomizer-Web",
+                description = "SMO Randomizer Web Application" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-csharp",
+                link = "damageless",
+                name = "SMO-Damageless",
+                description = "SMO damageless leaderboard" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-typescript",
+                link = "ootr-tracker",
+                name = "OoTR Tracker",
+                description = "Note taking app for OoT Randomizer" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-csharp",
+                link = "livesplit",
+                name = "LiveSplit",
+                description = "LiveSplit modifications/components" -%]
+
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-python",
+                link = "https://docs.google.com/spreadsheets/d/1oxbVLmMhKZeB_ouAR1aR8ejXzyPmbzECwcDZYKbrYvU/htmlview",
+                name = "SMO Countries Sheet",
+                description = "SMO leaderboard sorted by countries/states" -%]
             </ul>
             <p class="text-3xl mt-4">Productivity</p>
             <ul class="list-disc ml-7 text-gray-300">
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                    href="notetree">Note Tree</a> - Simple note taking application</li>
+                [%- INCLUDE templates/portfolio_item.html
+                lang = "text-language-cplusplus",
+                link = "notetree",
+                name = "Note Tree",
+                description = "Simple note taking application" -%]
             </ul>
         </div>
     </div>
