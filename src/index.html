@@ -1,68 +1,55 @@
-[%- INCLUDE templates/header.html title = "Amy" -%]
-<body class="bg-bg-primary flex flex-wrap justify-center items-center text-[16px] h-screen">
-    <div class="flex flex-wrap justify-center">
-        <div
-            class="rounded-lg border-4 border-accent p-11 relative overflow-hidden flex-same-size bg-bg-secondary inset-px text-white max-w-[72ch]">
-            <p class="text-4xl">Amy</p>
-            <p class="text-lg text-gray-300">C|EH, Security+</p>
-            <p class="italic w-full text-md text-gray-300">"everything is improvised."</p>
-            <p class="text-3xl mt-4">Portfolio</p>
-            <ul class="list-disc ml-7 text-gray-300">
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-go",
-                link = "https://github.com/amyy54/uformat",
-                name = "uformat",
-                description = "Universal code formatter" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-go"
-                link = "https://github.com/amyy54/pwlist",
-                name = "pwlist",
-                description = "Wordlist generator for password craacking" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-rust"
-                link = "https://github.com/amyy54/tc",
-                name = "Time Converter",
-                description = "CLI tool for the parsing and manipulation of timezones" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-white"
-                link = "docs",
-                name = "Docs",
-                description = "Documentation site" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-python"
-                link = "gr-graph",
-                name = "Goodreads Graph",
-                description = "Github-like graph for Goodreads reading activity" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-python"
-                link = "tvlog",
-                name = "TV Logging"
-                description = "A website to log TV show watching activity" -%]
-
-                <li><a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="deprecated">...and more!</a> <span class="text-white">(Deprecated projects)</span></li>
-            </ul>
-            <p class="text-3xl mt-4">Socials</p>
-            <ul class="list-disc ml-7 text-white">
-                <li>Email - <a class="font-bold text-accent hover:underline"
-                        href="mailto:public@amyy.me">public@amyy.me</a></li>
-                <li>GitHub - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://github.com/amyy54">amyy54</a></li>
-                <li>Discord - <span class="font-bold">am.yy</span></li>
-                <li>Goodreads - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://www.goodreads.com/amyy54">amyy54</a> (<a target="_blank" rel="noreferrer noopener"
-                        class="font-bold text-accent hover:underline" href="https://amyy.me/gr-graph/user/amy">graph</a>)</li>
-                <li>Letterboxd - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://letterboxd.com/amyy54/">amyy54</a></li>
-                <li>TV Log - <a target="_blank" rel="noreferrer noopener" class="font-bold text-accent hover:underline"
-                        href="https://amyy.me/tvlog/@amy">@amy</a></li>
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "base.html" %} {% from "macros.html" import portfolio_item %} {%
+block content %}
+<div class="header">
+  <h1>Amy</h1>
+  <h5 class="subtitle">C|EH, Security+</h5>
+</div>
+<div class="description">
+  <a href="https://amyy.me/docs">Documentation Site</a>
+</div>
+<div class="list-box">
+  <h2>Code Portfolio</h2>
+  <ul>
+    {{ portfolio_item('https://github.com/amyy54/garden', 'garden', 'Automated
+    vulnerability scan orchestrator (NSF REU Project)', 'go') }} {{
+    portfolio_item('https://github.com/amyy54/uformat', 'uformat', 'Universal
+    code formatter', 'go') }} {{
+    portfolio_item('https://github.com/amyy54/pwlist', 'pwlist', 'Wordlist
+    generator for password cracking', 'go') }} {{
+    portfolio_item('https://github.com/amyy54/tc', 'Time Converter', 'CLI tool
+    for the parsing and manipulation of timezones', 'rust') }} {{
+    portfolio_item('https://amyy.me/gr-graph', 'Goodreads Graph', 'Github-like
+    graph for Goodreads reading activity', 'python') }} {{
+    portfolio_item('https://amyy.me/tvlog', 'tvlog', 'Website to log TV show
+    watching activity', 'python') }} {{ portfolio_item('deprecated', '...and
+    more!', 'Deprecated Projects', 'blank') }}
+  </ul>
+</div>
+<div class="list-box">
+  <h2>Socials</h2>
+  <ul>
+    <li>Email - <a href="mailto:public@amyy.me">public@amyy.me</a></li>
+    <li>
+      GitHub - <a href="https://github.com/amyy54" target="_blank">amyy54</a>
+    </li>
+    <li>Signal - <span style="font-weight: 700">amyy.54</span></li>
+    <li>Discord - <span style="font-weight: 700">am.yy</span></li>
+    <li>
+      Goodreads -
+      <a href="https://www.goodreads.com/amyy54" target="_blank">amyy54</a> (<a
+        href="https://amyy.me/gr-graph/@amy"
+        target="_blank"
+        >graph</a
+      >)
+    </li>
+    <li>
+      Letterboxd -
+      <a href="https://letterboxd.com/amyy54" target="_blank">amyy54</a>
+    </li>
+    <li>
+      TVLog -
+      <a href="https://amyy.me/tvlog/@amy" target="_blank">@amy</a>
+    </li>
+  </ul>
+</div>
+{% endblock content %}

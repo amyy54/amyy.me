@@ -1,126 +1,38 @@
-from dataclasses import dataclass
-from pathlib import Path
-import subprocess
 import os
 import shutil
-import sys
 
-STATIC_DEPLOYED = "/static/mini.amyy.me/"
-STATIC_TESTING = "/static/"
+from bs4 import BeautifulSoup
+from jinja2 import Environment, FileSystemLoader
 
+CSS_PATH = os.getenv("CSS_PATH", default="css")
 
-@dataclass
-class StaticFile:
-    filename: str
-    path: str
+env = Environment(loader=FileSystemLoader("src"))
+os.makedirs("./build", exist_ok=True)
+shutil.copytree("src/css", "build/css", dirs_exist_ok=True)
+shutil.copytree("src/base", "build", dirs_exist_ok=True)
 
+index_template = env.get_template("index.html")
+index_html = index_template.render(title="Amy", css_path=CSS_PATH)
+index_soup = BeautifulSoup(index_html, "html.parser")
+with open("build/index.html", "w") as f:
+    f.write(str(index_soup))
 
-def generated_file_name(filename: str, version: str) -> str:
-    filenameArr = filename.split(".")
-    filenameArr.insert(-1, version)
-    output = ""
-    for name in filenameArr:
-        output += name + "."
-    return output[:-1]
+deprecated_template = env.get_template("deprecated.html")
+deprecated_html = deprecated_template.render(
+    title="Deprecated - Amy", css_path=CSS_PATH
+)
+deprecated_soup = BeautifulSoup(deprecated_html, "html.parser")
+with open("build/deprecated.html", "w") as f:
+    f.write(str(deprecated_soup))
 
+four04_template = env.get_template("404.html")
+four04_html = four04_template.render(title="404 - Amy", css_path=CSS_PATH)
+four04_soup = BeautifulSoup(four04_html, "html.parser")
+with open("build/404.html", "w") as f:
+    f.write(str(four04_soup))
 
-def new_html_file(
-    filename: str, result: str, static: list[StaticFile], version: str
-) -> None:
-    output = result.replace("<script src=https://cdn.tailwindcss.com></script>", "")
-    for file in static:
-        output = output.replace(f"={file.filename}", f"={file.path}")
-    output = output.replace("REPLACE_ALL_GIT_VERSION", version)
-    with open(f"build/{filename}", "w+") as html_file:
-        html_file.write(output)
-
-
-if __name__ == "__main__":
-    STATIC_LOCATION = STATIC_TESTING if "-d" in sys.argv else STATIC_DEPLOYED
-
-    static_files: list[StaticFile] = []
-    # Get Git Version
-    result = subprocess.run(["git", "describe", "--always"], stdout=subprocess.PIPE)
-    GIT_VERSION = result.stdout.decode("utf-8").strip()
-
-    shutil.rmtree("build/", ignore_errors=True)
-
-    subprocess.run(["mkdir", "-p", "build/static/fonts"])
-
-    for filename in os.listdir("src/fonts/"):
-        shutil.copyfile(f"src/fonts/{filename}", f"build/static/fonts/{filename}")
-        if filename.endswith(".ttf"):
-            static_files.append(
-                StaticFile(filename=filename, path=f"{STATIC_LOCATION}fonts/{filename}")
-            )
-
-    for filename in os.listdir("src/favicon/"):
-        shutil.copyfile(f"src/favicon/{filename}", f"build/{filename}")
-
-    for filename in os.listdir("src/"):
-        if filename.endswith(".png"):
-            shutil.copyfile(f"src/{filename}", f"build/static/{filename}")
-            static_files.append(
-                StaticFile(filename=filename, path=f"{STATIC_LOCATION}{filename}")
-            )
-        elif filename.endswith(".css"):
-            file = open(
-                f"build/static/{generated_file_name(filename, GIT_VERSION)}", "w+"
-            )
-            subprocess.run(
-                [
-                    "npx",
-                    "tailwindcss",
-                    "-i",
-                    f"src/{filename}",
-                    "-o",
-                    f"build/static/{filename}",
-                ]
-            )
-            subprocess.run(["npx", "minify", f"build/static/{filename}"], stdout=file)
-            file.close()
-            static_files.append(
-                StaticFile(
-                    filename=filename,
-                    path=f"{STATIC_LOCATION}{generated_file_name(filename, GIT_VERSION)}",
-                )
-            )
-            os.remove(f"build/static/{filename}")
-        elif filename.endswith(".js"):
-            file = open(
-                f"build/static/{generated_file_name(filename, GIT_VERSION)}", "w+"
-            )
-            result = (
-                subprocess.run(
-                    ["npx", "minify", f"src/{filename}"], stdout=subprocess.PIPE
-                )
-                .stdout.decode("utf-8")
-                .strip()
-            )
-            result = result.replace("REPLACE_ALL_GIT_VERSION", GIT_VERSION)
-            file.write(result)
-            file.close()
-            static_files.append(
-                StaticFile(
-                    filename=filename,
-                    path=f"{STATIC_LOCATION}{generated_file_name(filename, GIT_VERSION)}",
-                )
-            )
-        # elif not filename.endswith(".html"):
-        #     shutil.copyfile(f"src/{filename}", f"build/{filename}")
-
-    open(Path.home().joinpath(".ttreerc"), "a").close()
-    subprocess.run(
-        ["ttree", "-s", "src/", "-d", "build/ttree/"], stdout=subprocess.DEVNULL
-    )
-    for filename in os.listdir("build/ttree/"):
-        if filename.endswith(".html"):
-            result = (
-                subprocess.run(
-                    ["npx", "minify", f"build/ttree/{filename}"], stdout=subprocess.PIPE
-                )
-                .stdout.decode("utf-8")
-                .strip()
-            )
-            new_html_file(filename, result, static_files, GIT_VERSION)
-    shutil.rmtree("build/ttree/")
+five00_template = env.get_template("50x.html")
+five00_html = five00_template.render(title="50x - Amy", css_path=CSS_PATH)
+five00_soup = BeautifulSoup(five00_html, "html.parser")
+with open("build/50x.html", "w") as f:
+    f.write(str(five00_soup))

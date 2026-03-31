@@ -1,0 +1,6 @@
+{% macro portfolio_item(link, name, description, color) %}
+<li class="language-{{ color }}">
+  <a href="{{ link }}" target="_blank">{{ name }}</a
+  ><span style="color: white"> - {{ description }}</span>
+</li>
+{% endmacro %}

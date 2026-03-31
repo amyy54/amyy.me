@@ -1,65 +1,35 @@
-[%- INCLUDE templates/header.html
-title = "Deprecated - Amy"
--%]
-<body class="bg-bg-primary flex flex-wrap justify-center items-center text-[16px] h-screen">
-    <div class="flex flex-wrap justify-center">
-        <div
-            class="rounded-lg border-4 border-accent p-11 relative overflow-hidden flex-same-size bg-bg-secondary inset-px text-white max-w-[72ch]">
-            <p class="text-4xl mb-2">Deprecated Projects</p>
-            <p >These are projects that, for whatever reason, I have marked as "deprecated". Either it's a tool/website I no longer properly maintain or look at, or it could be because I'm just not happy with it. Other older resources are also linked here.</p>
-            <p class="text-3xl mt-4">Video Games & Speedrunning</p>
-            <ul class="list-disc ml-7 text-gray-300">
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-python",
-                link = "speedruns",
-                name = "Speedruns",
-                description = "Personal speedrun website" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-typescript",
-                link = "src-analyzer",
-                name = "src-verification-analyzer",
-                description = "Gathers verification information from Speedrun.com" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-python",
-                link = "randomizer",
-                name = "SMO-Randomizer-Web",
-                description = "SMO Randomizer Web Application" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-csharp",
-                link = "damageless",
-                name = "SMO-Damageless",
-                description = "SMO damageless leaderboard" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-typescript",
-                link = "ootr-tracker",
-                name = "OoTR Tracker",
-                description = "Note taking app for OoT Randomizer" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-csharp",
-                link = "livesplit",
-                name = "LiveSplit",
-                description = "LiveSplit modifications/components" -%]
-
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-python",
-                link = "https://docs.google.com/spreadsheets/d/1oxbVLmMhKZeB_ouAR1aR8ejXzyPmbzECwcDZYKbrYvU/htmlview",
-                name = "SMO Countries Sheet",
-                description = "SMO leaderboard sorted by countries/states" -%]
-            </ul>
-            <p class="text-3xl mt-4">Productivity</p>
-            <ul class="list-disc ml-7 text-gray-300">
-                [%- INCLUDE templates/portfolio_item.html
-                lang = "text-language-cplusplus",
-                link = "notetree",
-                name = "Note Tree",
-                description = "Simple note taking application" -%]
-            </ul>
-        </div>
-    </div>
-</body>
-</html>
+{% extends "base.html" %} {% from "macros.html" import portfolio_item %} {%
+block content %}
+<h1>Deprecated Projects</h1>
+<p>
+  These are projects that, for whatever reason, I have marked as "deprecated".
+  Either it's a tool/website I no longer properly maintain or look at, or it
+  could be because I'm just not happy with it. Some other older resources are
+  also linked here.
+</p>
+<div class="list-box">
+  <h2>Video Games & Speedrunning</h2>
+  <ul>
+    {{ portfolio_item('https://amyy.me/src-analyzer', 'src-analyzer', 'Gathers
+    verification information from speedrun.com', 'typescript') }} {{
+    portfolio_item('https://amyy.me/randomizer', 'SMO-Randomizer-Web', 'SMO
+    randomizer web app', 'python') }} {{
+    portfolio_item('https://amyy.me/damageless', 'SMO-Damageless', 'SMO
+    damageless leaderboard', 'csharp') }} {{
+    portfolio_item('https://amyy.me/ootr-tracker', 'ootr-tracker', 'Hint tracker
+    for OoTR', 'typescript') }} {{
+    portfolio_item('https://github.com/amyy54/LiveSplit.Discord',
+    'LiveSplit.Discord', 'Discord integration with LiveSplit', 'csharp') }} {{
+    portfolio_item('https://docs.google.com/spreadsheets/d/1oxbVLmMhKZeB_ouAR1aR8ejXzyPmbzECwcDZYKbrYvU/htmlview',
+    'SMO Countries Sheet', 'SMO leaderboard sorted by countries/states',
+    'python') }}
+  </ul>
+</div>
+<div class="list-box">
+  <h2>Productivity</h2>
+  <ul>
+    {{ portfolio_item('https://github.com/amyy54/note-tree', 'Note Tree', 'Note
+    taking app', 'cpp') }}
+  </ul>
+</div>
+{% endblock content %}
